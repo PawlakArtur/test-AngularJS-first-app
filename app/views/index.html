@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="directoryApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularApp</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script src="../controllers/directory.js"></script>
+</head>
+<body ng-controller="directoryController as dirList">
+    <div>
+        <label>Set limit:</label>
+        <input type="number" ng-model="limit" value="1">
+        <input type="text" ng-model="search">
+        <ul>
+            <li ng-repeat="item in dirList.list
+            | filter:search
+            | limitTo:limit
+            | orderBy:'age'">
+                {{item.name}} {{item.age | currency:"&yen;":0}}
+            </li>
+        </ul>
+        <form ng-submit="dirList.addPerson()">
+            <input type="text" placeholder="Name" ng-model="dirList.name">
+            <input type="number" placeholder="Age" ng-model="dirList.age">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
