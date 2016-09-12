@@ -1,4 +1,17 @@
-angular.module('directoryApp', ['ngAnimate'])
+angular.module('directoryApp', ['ngAnimate', 'ui.router'])
+    .config(function($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/');
+        $stateProvider
+            .state('home', {
+                url: '/',
+                templateUrl: '../views/home.html',
+                controller: 'directoryController as dirList'
+            })
+            .state('about', {
+                url: '/about',
+                templateUrl: '../views/about.html'
+            });
+    })
     .controller('directoryController', function() {
         var dirList = this;
 
@@ -16,4 +29,9 @@ angular.module('directoryApp', ['ngAnimate'])
             dirList.name = '';
             dirList.age = 0;
         };
+    })
+    .directive('directoryPerson', function() {
+        return {
+            templateUrl: 'directory-person.html'
+        }
     });

@@ -18,3 +18,5 @@ I learned using:
 - ng-hide
 - ng-include
 - ngAnimate
+- ui.Router
+- directive

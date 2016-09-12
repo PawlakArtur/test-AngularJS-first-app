@@ -5,31 +5,34 @@
     <title>AngularApp</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+    <script src="../assets/scripts/angular-ui-router.min.js"></script>
     <script src="../controllers/directory.js"></script>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body ng-controller="directoryController as dirList">
-    <div>
-        <div class="top-div">
-            <label>Set limit:</label>
-            <input type="number" ng-model="limit" >
-            <label>Filter:</label>
-            <input type="text" ng-model="search">
-            <button ng-show="!dirList.toggle" ng-click="dirList.toggle = true">Show Names</button>
-            <button ng-show="dirList.toggle" ng-click="dirList.toggle = false">Hide Names</button>
-        </div>
-        <ul ng-if="dirList.toggle">
-            <li ng-repeat="item in dirList.list | filter: search | limitTo: limit"
-                ng-class="item.age > 29 ? 'over-thirty' : 'under-thirty'"
-                ng-include="'person.html'">
+<!--<body ng-controller="directoryController as dirList">-->
+<body>
+    <main ui-view></main>
+    <!--<div>-->
+        <!--<div class="top-div">-->
+            <!--<label>Set limit:</label>-->
+            <!--<input type="number" ng-model="limit" >-->
+            <!--<label>Filter:</label>-->
+            <!--<input type="text" ng-model="search">-->
+            <!--<button ng-show="!dirList.toggle" ng-click="dirList.toggle = true">Show Names</button>-->
+            <!--<button ng-show="dirList.toggle" ng-click="dirList.toggle = false">Hide Names</button>-->
+        <!--</div>-->
+        <!--<ul ng-if="dirList.toggle">-->
+            <!--<li ng-repeat="item in dirList.list | filter: search | limitTo: limit"-->
+                <!--ng-class="item.age > 29 ? 'over-thirty' : 'under-thirty'"-->
+                <!--ng-include="'person.html'">-->
 
-            </li>
-        </ul>
-        <form ng-submit="dirList.addPerson()">
-            <input type="text" placeholder="Name" ng-model="dirList.name">
-            <input type="number" placeholder="Age" ng-model="dirList.age">
-            <input type="submit" value="Submit">
-        </form>
-    </div>
+            <!--</li>-->
+        <!--</ul>-->
+        <!--<form ng-submit="dirList.addPerson()">-->
+            <!--<input type="text" placeholder="Name" ng-model="dirList.name">-->
+            <!--<input type="number" placeholder="Age" ng-model="dirList.age">-->
+            <!--<input type="submit" value="Submit">-->
+        <!--</form>-->
+    <!--</div>-->
 </body>
 </html>
